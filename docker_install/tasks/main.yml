@@ -20,9 +20,9 @@
 - name: Install Docker, Docker Compose, and containerd
   apt:
     name:
-      - docker-ce={{ docker_version | default('latest') }}
-      - docker-ce-cli={{ docker_version default('latest') }}
-      - containerd.io={{ containerd_version default('latest') }}
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
     state: present
     update_cache: yes
   vars:
