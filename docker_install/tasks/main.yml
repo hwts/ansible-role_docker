@@ -28,7 +28,7 @@
     update_cache: yes
 
 - name: Install Python SDK for Docker
-  pip:
+  pip3:
     name:
       - docker
       - docker-compose
