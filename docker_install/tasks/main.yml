@@ -24,13 +24,13 @@
       - docker-ce
       - docker-ce-cli
       - containerd.io
-      - python3-pip
+      - python-pip
     state: present
     update_cache: yes
   become: true
 
 - name: Install Python SDK for Docker
-  pip3:
+  pip:
     name:
       - docker
       - docker-compose
