@@ -1,0 +1,35 @@
+---
+- name: Install gnupg package
+  apt:
+    name: gnupg
+    state: present
+
+- name: Add Docker repo GPG keys
+  apt_key:
+    url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+    state: present
+
+- name: Add Docker repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/{{ docker_distribution }} {{ docker_release }} stable"
+    state: present
+  vars:
+    docker_distribution: "{{ ansible_distribution | lower }}"
+    docker_release: "{{ ansible_distribution_release | lower }}"
+
+- name: Install Docker, Docker Compose, and containerd
+  apt:
+    name:
+      - docker-ce={{ docker_version | default('latest') }}
+      - docker-ce-cli={{ docker_version default('latest') }}
+      - containerd.io={{ containerd_version default('latest') }}
+    state: present
+    update_cache: yes
+  vars:
+
+- name: Install Python SDK for Docker
+  pip:
+    name:
+      - docker
+      - docker-compose
+    state: present
