@@ -25,7 +25,6 @@
       - containerd.io
     state: present
     update_cache: yes
-  vars:
 
 - name: Install Python SDK for Docker
   pip:
