@@ -3,6 +3,7 @@
   apt:
     name: gnupg
     state: present
+  become: true
 
 - name: Add Docker repo GPG keys
   apt_key:
@@ -26,6 +27,7 @@
       - python3-pip
     state: present
     update_cache: yes
+  become: true
 
 - name: Install Python SDK for Docker
   pip3:
